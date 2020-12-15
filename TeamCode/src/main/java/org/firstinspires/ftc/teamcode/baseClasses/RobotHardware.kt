@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.baseClasses
 import com.qualcomm.hardware.bosch.BNO055IMU
 import com.qualcomm.robotcore.hardware.DcMotor
 import com.qualcomm.robotcore.hardware.HardwareMap
+import org.firstinspires.ftc.robotcore.external.Telemetry
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference
@@ -17,8 +18,8 @@ class RobotHardware(hardwareMap: HardwareMap) {
     /**
      * The IMU sensor on the robot. Used for getting the robot's orientation among other things
      */
-//    private val imu: BNO055IMU = ImuBridge.get(hardwareMap)
-    private lateinit var imu: BNO055IMU
+    private val imu: BNO055IMU = ImuBridge.get(hardwareMap)
+//    private lateinit var imu: BNO055IMU
 
 
     fun getOrientation(): Orientation {
@@ -27,7 +28,7 @@ class RobotHardware(hardwareMap: HardwareMap) {
 
 
     init {
-//        initImu()
+        initImu()
     }
 
 
@@ -39,15 +40,15 @@ class RobotHardware(hardwareMap: HardwareMap) {
 
 
     class Base(hardwareMap: HardwareMap) {
-//        val leftFront = hardwareMap.dcMotor.get("leftFrontMotor")
-//        val leftBack = hardwareMap.dcMotor.get("leftBackMotor")
-//        val rightFront = hardwareMap.dcMotor.get("rightFrontMotor")
-//        val rightBack = hardwareMap.dcMotor.get("rightBackMotor")
+        val leftFront: DcMotor = hardwareMap.dcMotor.get("leftFrontMotor")
+        val leftBack: DcMotor = hardwareMap.dcMotor.get("leftBackMotor")
+        val rightFront: DcMotor = hardwareMap.dcMotor.get("rightFrontMotor")
+        val rightBack: DcMotor = hardwareMap.dcMotor.get("rightBackMotor")
 
-        lateinit var leftFront: DcMotor
-        lateinit var leftBack: DcMotor
-        lateinit var rightFront: DcMotor
-        lateinit var rightBack: DcMotor
+//        lateinit var leftFront: DcMotor
+//        lateinit var leftBack: DcMotor
+//        lateinit var rightFront: DcMotor
+//        lateinit var rightBack: DcMotor
 
         val motors: Array<DcMotor>
             get() = arrayOf(leftFront, leftBack, rightFront, rightBack)

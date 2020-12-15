@@ -20,7 +20,7 @@ class MecanumDriveParameters private constructor(
     companion object {
         @JvmStatic fun fromGamepad(gamepad: Gamepad, hardware: RobotHardware): MecanumDriveParameters {
             val driveX = gamepad.left_stick_y.toDouble()
-            val driveY = gamepad.left_stick_x.toDouble()
+            val driveY = -gamepad.left_stick_x.toDouble()
             val turnX = gamepad.right_stick_x.toDouble()
             return fromXYTurn(x = driveX, y = driveY, turn = turnX, hardware = hardware)
         }
