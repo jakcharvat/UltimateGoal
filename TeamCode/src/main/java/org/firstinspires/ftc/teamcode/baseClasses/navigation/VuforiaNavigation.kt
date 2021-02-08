@@ -29,9 +29,9 @@ class VuforiaNavigation(logger: LoggerFunction) {
     private var targetVisible = false
 
     // Phone Position
-    private val phoneXRotation = if (PHONE_IS_PORTRAIT) 90f else 0f // Rotate the phone vertical about the X axis if it's in portrait mode
-    private val phoneYRotation = if (CAMERA_DIRECTION == CameraDirection.BACK) -90f else 90f // We need to rotate the camera around it's long axis to bring the correct camera forward.
-    private val phoneZRotation = 0f
+    private val PHONE_X_ROTATION = if (PHONE_IS_PORTRAIT) 90f else 0f // Rotate the phone vertical about the X axis if it's in portrait mode
+    private val PHONE_Y_ROTATION = if (CAMERA_DIRECTION == CameraDirection.BACK) -90f else 90f // We need to rotate the camera around it's long axis to bring the correct camera forward.
+    private val PHONE_Z_ROTATION = 0f
 
     private val CAMERA_FORWARD_DISPLACEMENT = UnitDistance.inches(4).millimetres.toFloat() // eg: Camera is 4 Inches in front of robot center
     private val CAMERA_VERTICAL_DISPLACEMENT = UnitDistance.inches(8).millimetres.toFloat() // eg: Camera is 8 Inches above ground
@@ -146,7 +146,7 @@ class VuforiaNavigation(logger: LoggerFunction) {
 
         val matrix = OpenGLMatrix
                 .translation(CAMERA_FORWARD_DISPLACEMENT, CAMERA_LEFT_DISPLACEMENT, CAMERA_VERTICAL_DISPLACEMENT)
-                .multiplied(Orientation.getRotationMatrix(AxesReference.EXTRINSIC, AxesOrder.YZX, AngleUnit.DEGREES, phoneYRotation, phoneZRotation, phoneXRotation))
+                .multiplied(Orientation.getRotationMatrix(AxesReference.EXTRINSIC, AxesOrder.YZX, AngleUnit.DEGREES, PHONE_Y_ROTATION, PHONE_Z_ROTATION, PHONE_X_ROTATION))
 
         cameraToRobotTransformationMatrix = matrix
     }

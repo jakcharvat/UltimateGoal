@@ -19,8 +19,6 @@ class RobotHardware(hardwareMap: HardwareMap) {
      * The IMU sensor on the robot. Used for getting the robot's orientation among other things
      */
     private val imu: BNO055IMU = ImuBridge.get(hardwareMap)
-//    private lateinit var imu: BNO055IMU
-
 
     fun getOrientation(): Orientation {
         return imu.getAngularOrientation(AxesReference.EXTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
@@ -44,11 +42,6 @@ class RobotHardware(hardwareMap: HardwareMap) {
         val leftBack: DcMotor = hardwareMap.dcMotor.get("leftBackMotor")
         val rightFront: DcMotor = hardwareMap.dcMotor.get("rightFrontMotor")
         val rightBack: DcMotor = hardwareMap.dcMotor.get("rightBackMotor")
-
-//        lateinit var leftFront: DcMotor
-//        lateinit var leftBack: DcMotor
-//        lateinit var rightFront: DcMotor
-//        lateinit var rightBack: DcMotor
 
         val motors: Array<DcMotor>
             get() = arrayOf(leftFront, leftBack, rightFront, rightBack)
