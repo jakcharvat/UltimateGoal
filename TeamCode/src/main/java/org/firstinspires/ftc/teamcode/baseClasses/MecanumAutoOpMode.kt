@@ -4,10 +4,6 @@ import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix
 import org.firstinspires.ftc.teamcode.baseClasses.navigation.AutonomousTarget
 import org.firstinspires.ftc.teamcode.baseClasses.navigation.VuforiaNavigation
 import kotlin.jvm.Throws
-import kotlin.math.atan2
-import kotlin.math.min
-import kotlin.math.pow
-import kotlin.math.sqrt
 
 abstract class MecanumAutoOpMode: BaseLinearOpMode() {
     private val navigation = VuforiaNavigation(::logger)
