@@ -9,6 +9,7 @@ import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix
 
 abstract class BaseLinearOpMode: LinearOpMode() {
     lateinit var hardware: RobotHardware
+    var listeners: PressListeners = PressListeners()
 
     /**
      * Immediately stop the robot

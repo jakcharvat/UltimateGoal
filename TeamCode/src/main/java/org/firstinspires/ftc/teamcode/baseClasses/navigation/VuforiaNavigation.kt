@@ -111,7 +111,7 @@ class VuforiaNavigation(logger: LoggerFunction) {
     private fun positionTargets() {
         // Position targets relative to field origin
         redAllianceTarget.location = OpenGLMatrix
-                .translation(0f, -HALF_FIELD_PERIMETER_TARGET, TARGET_HEIGHT)
+                .translation(0f, -QUARTER_FIELD_PERIMETER_TARGET, TARGET_HEIGHT)
                 .multiplied(Orientation.getRotationMatrix(AxesReference.EXTRINSIC, AxesOrder.XYZ, AngleUnit.DEGREES, 90f, 0f, 180f))
         blueAllianceTarget.location = OpenGLMatrix
                 .translation(0f, HALF_FIELD_PERIMETER_TARGET, TARGET_HEIGHT)

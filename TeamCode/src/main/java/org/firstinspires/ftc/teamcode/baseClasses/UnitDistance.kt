@@ -1,8 +1,6 @@
 package org.firstinspires.ftc.teamcode.baseClasses
 
-class UnitDistance private constructor(mm: Double) {
-    val mm: Double = mm
-
+class UnitDistance private constructor(private val mm: Double) {
     companion object {
         @JvmStatic private val MM_IN_INCH = 25.4
 

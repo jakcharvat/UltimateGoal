@@ -18,10 +18,11 @@ class MecanumDriveParameters private constructor(
         val strafeAmount: Double,
 ) {
     companion object {
-        @JvmStatic fun fromGamepad(gamepad: Gamepad, hardware: RobotHardware): MecanumDriveParameters {
-            val driveX = gamepad.left_stick_y.toDouble()
-            val driveY = -gamepad.left_stick_x.toDouble()
-            val turnX = gamepad.right_stick_x.toDouble()
+        @JvmStatic fun fromGamepad(gamepad: Gamepad, hardware: RobotHardware, reduced: Boolean): MecanumDriveParameters {
+            val multiplier = if (reduced) 0.2 else 1.0
+            val driveX = gamepad.left_stick_y.toDouble() * multiplier
+            val driveY = -gamepad.left_stick_x.toDouble() * multiplier
+            val turnX = gamepad.right_stick_x.toDouble() * multiplier
             return fromXYTurn(x = driveX, y = driveY, turn = turnX, hardware = hardware)
         }
 
@@ -56,7 +57,7 @@ class MecanumDriveParameters private constructor(
 
         @JvmStatic private fun fromXYTurn(x: Double, y: Double, turn: Double, hardware: RobotHardware): MecanumDriveParameters {
             val orientation: Orientation = hardware.getOrientation()
-            val angle = UnitAngle.degrees(orientation.firstAngle.toDouble())
+            val angle = UnitAngle.degrees(orientation.firstAngle.toDouble() + 90.0)
 
             val forward = y * cos(angle.radians) + x * sin(angle.radians)
             val strafe = -y * sin(angle.radians) + x * cos(angle.radians)
